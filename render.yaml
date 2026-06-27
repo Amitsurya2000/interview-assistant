@@ -13,10 +13,10 @@ services:
       - key: OLLAMA_MODEL
         value: llama3.2
 
-  - type: web
+  - type: private_service
     name: ollama
-    env: docker
-    image: ollama/ollama:latest
+    image:
+      url: ollama/ollama:latest
     disk:
       name: ollama-data
       mountPath: /root/.ollama
