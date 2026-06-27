@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: interview-assistant
+    env: docker
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: AUTH_TOKEN
+        sync: false
+      - key: OLLAMA_BASE_URL
+        value: http://ollama:11434
+      - key: WHISPER_MODEL
+        value: base
+      - key: OLLAMA_MODEL
+        value: llama3.2
+
+  - type: web
+    name: ollama
+    env: docker
+    image: ollama/ollama:latest
+    disk:
+      name: ollama-data
+      mountPath: /root/.ollama
+      sizeGB: 10
